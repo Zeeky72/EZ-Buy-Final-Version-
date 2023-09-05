@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+
+    <link href="~/Scripts/MyMovie.css" rel="stylesheet" />
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body style="background-image: url('../../loginresource/images/pop.png'); ">
+    @if (Session["Username"].ToString() == null && Session["Role"].ToString() == null)
+    {
+        Html.RenderPartial("_LogInError");
+    }
+    <div>
+        <h1>Payment method</h1>
+        <button>
+            @Html.ActionLink("Card", "Payment")
+        </button>
+        <button>
+            @Html.ActionLink("upi", "PaymentB")
+
+        </button>
+    </div>
+</body>
+</html>

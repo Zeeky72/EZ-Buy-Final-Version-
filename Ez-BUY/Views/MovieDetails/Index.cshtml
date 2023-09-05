@@ -1,0 +1,104 @@
+﻿@model IEnumerable<OnlineMovieV04.Models.MovieDetail>
+
+@{
+    ViewBag.Title = "Movies";
+
+
+<link href="~/Scripts/MyMovie.css" rel="stylesheet" />
+
+
+}
+@{//int count = 0;
+
+
+} 
+
+
+<body style="background-image: url('https://media.istockphoto.com/id/916205668/photo/woman-holding-bucket-of-popcorn.jpg?s=612x612&w=0&k=20&c=U7upljN-HTnkY1lM8Z-kt9UKvjLKDZfoob2HlM_qm5E=') ">
+    @if (Session["Username"] == null && Session["Role"] == null)
+    {
+        Html.RenderAction("ErrorControl", "Home");
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+
+            if (item.EndDate >= DateTime.Now || Session["Role"].ToString() == "admin")
+            {
+                @*
+                    if (count == 0)
+                    {
+                        Session["MID"] = item.ID;
+                        Session["MPrice"] = item.Price;
+                        count = 2;
+                    }*@
+
+                <div class="wrapper">
+                    <div class="main_card">
+                        <div class="card_left">
+                            <div class="card_datails">
+                                <h1>@item.Name  </h1>
+                                <div class="card_cat">
+                                    <p class="PG">PG - 13</p>
+                                    <p class="year">@DateTime.Parse(item.StartDate.ToString()).Year.ToString()</p>
+                                    <p class="genre">@item.MovieCategory </p>
+                                </div>
+                                <p class="disc">@item.Description</p>
+                                <a href="@item.Trailer" target="_blank">Watch Trailer..</a>
+                                <div class="social-btn">
+                                    <!-- WATCH TRAILER-->
+                                    <button>
+
+
+                                        @Html.ActionLink("Buy @ " + item.Price, "Payment", "BookingCnfs", new { id = item.ID }, new { @class = "" })
+
+
+                                    </button>
+
+                                    @if (Session["Role"].ToString() == "admin")
+                                    {
+                                        <!-- GET-->
+                                        <button>
+
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                                        </button>
+                                        <!--USERS RATINGS-->
+                                        <button style="background-color:red">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                        </button>
+                                        <!--BOOKMARK-->
+                                        <button>
+                                            @Html.ActionLink("Details", "Details", new { id = item.ID })
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card_right">
+                            <div class="img_container">
+                                <img src="@item.ImageUrl" alt="">
+                            </div>
+                            <div class="play_btn">
+                                <a href="https://www.imdb.com/title/tt4912910/" target="_blank">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        }
+
+        if (Session["Role"].ToString() == "admin")
+        {<button>
+                @Html.ActionLink("Create New", "Create")
+            </button>
+        }
+    }
+
+
+</body>

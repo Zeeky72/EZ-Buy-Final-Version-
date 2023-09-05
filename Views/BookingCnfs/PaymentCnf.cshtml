@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PaymentCnf</title>
+
+</head>
+<body style="background-image: url('../../loginresource/images/pop.png'); ">
+    @if (Session["Username"].ToString() == null && Session["Role"].ToString() == null)
+    {
+        Html.RenderPartial("_LogInError");
+    }
+    <div>
+        <h1>Do you want to buy movie again??</h1>
+        <button>
+            @Html.ActionLink("Yes", "PaymentA")
+        </button>
+        <button>
+            @Html.ActionLink("No", "Index")
+
+        </button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+    <link href="~/SignUpResources/css/style.css" rel="stylesheet" />
+    <script src="~/SignUpResources/js/jquery-2.2.3.min.js"></script>
+    <script src="~/SignUpResources/js/jquery-simple-validator.min.js"></script>
+}
+<body>
+<h1>
+
+</h1>
+
+<h1>
+    <span>V</span>alidator
+    <span>S</span>ignup
+    <span>F</span>orm
+</h1>
+<!-- //title -->
+<!-- content -->
+<div class="sub-main-w3">
+    @using (Html.BeginForm("SignUp", "Home", FormMethod.Post, new { @validate = "true" }))
+    {
+
+        <div class="form-group">
+            <label for="exampleInputText">Name</label>
+            <input type="text" class="form-control" name="Name" id="exampleInputText" placeholder="Enter Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputText">UserName</label>
+            <input type="text" class="form-control" name="UserName" id="exampleInputText" placeholder="Enter Your Username" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" name="Email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleMobile1">Mobile Number</label>
+            <input type="mobile" class="form-control" name="PhoneNumber" id="exampleMobile1" placeholder="Mobile number" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputText">DOB</label>
+            <input type="date" name="DOB" id="dateofbirth" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input maxlength="10" minlength="3" type="password" name="Password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="exampleConfirmPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleConfirmPassword1" name="name" placeholder="Confirm Password" required data-match="password"
+                   data-match-field="#exampleInputPassword1">
+        </div>
+        <div class="form-group">
+          
+            <input  type= "hidden" class="form-control" name="Role" id="exampleInputText" value="User" placeholder="Enter your Role" required>
+        </div>
+        <div class="form-group">
+            <label class="checkbox-inline">
+                <input type="checkbox"  value="true" required>I agree to the terms and conditions
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+    </div>
+<!-- //content -->
+<!-- copyright 
+<div class="footer">
+    <p>
+        &copy; 2018 Validator Signup Form. All rights reserved | Design by
+        <a href="http://w3layouts.com">W3layouts</a>
+    </p>
+</div>
+<!-- //copyright -->
+<!-- Jquery -->
+<script src="js/jquery-2.2.3.min.js"></script>
+<!-- //Jquery -->
+<!-- Jquery -->
+<script src="js/jquery-simple-validator.min.js"></script>
+<!-- //Jquery -->
+</body>
